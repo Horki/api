@@ -1,0 +1,16 @@
+---
+# Util tasks
+
+- name: updates a server
+  apt: update_cache=yes
+
+- name: upgrade a server
+  apt: upgrade=full
+
+- name: install utils
+  action: apt pkg={{item}} state=installed
+  become: true
+  become_method: sudo
+  with_items:
+    - htop
+    - tree

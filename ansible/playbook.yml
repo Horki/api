@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: vagrant
+  sudo: true
+
+  tasks:
+    - include: tasks/util/tasks.yml
+    - include: tasks/python/tasks.yml
+    - include: tasks/nginx/tasks.yml
+    - include: tasks/service/tasks.yml
+    - include: tasks/redis/tasks.yml
+    - include: tasks/postgres/tasks.yml
+
+  handlers:
+    - include: tasks/nginx/handlers.yml
+    - include: tasks/service/handlers.yml
+    - include: tasks/postgres/handlers.yml

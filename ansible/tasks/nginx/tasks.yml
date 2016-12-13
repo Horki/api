@@ -1,0 +1,22 @@
+---
+# nginx tasks
+
+- name: add nginx ppa
+  action: apt_repository repo=ppa:nginx/stable state=present
+
+- name: install nginx
+  action: apt pkg=nginx state=installed
+
+- name: remove default nginx site
+  action: file path=/etc/nginx/sites-enabled/default state=absent
+
+- name: write nginx.conf
+  action: template src=tasks/nginx/templates/nginx.conf dest=/etc/nginx/nginx.conf
+
+- name: create nginx site config
+  action: template src=tasks/nginx/templates/nginx_site.conf dest=/etc/nginx/sites-available/{{app_name}}.conf
+  notify:
+    - restart nginx
+
+- name: link nginx config
+  action: file src=/etc/nginx/sites-available/{{app_name}}.conf dest=/etc/nginx/sites-enabled/{{app_name}}.conf state=link

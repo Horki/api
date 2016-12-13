@@ -1,0 +1,7 @@
+---
+# Service tasks
+
+- name: create program service
+  action: template src=tasks/service/templates/api.conf dest=/etc/init/{{app_name}}.conf
+  notify:
+    - start app

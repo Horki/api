@@ -1,0 +1,6 @@
+---
+# Service handlers
+
+- name: start app
+  sudo: true
+  command: start {{ app_name }}
