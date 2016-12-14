@@ -1,4 +1,4 @@
-#Got from:http://blog.wercker.com/2013/11/25/django-16-part3.html
+# Got from:http://blog.wercker.com/2013/11/25/django-16-part3.html
 - name: test for locale settings...
   command: locale
   register: locale_output
@@ -7,15 +7,18 @@
 - name: set locale to {{locale}}
   command: /usr/sbin/update-locale LANG={{locale}} LC_ALL={{locale}} LANGUAGE={{locale}}
   when: "'LC_ALL={{locale}}' not in locale_output.stdout"
-  sudo: yes
+  become: true
+  become_method: sudo
 
 - name: update apt cache (if out of date)
   #Updates it only every 4 hours
   apt: update_cache=yes cache_valid_time={{ 60*60*4 }}
-  sudo: true
+  become: true
+  become_method: sudo
 
 - name: install prerequisites
-  sudo: true
+  become: true
+  become_method: sudo
   #This installs/upgrades every item
   apt: name={{ item }} state=latest
   with_items:
@@ -42,7 +45,8 @@
     - packages
 
 - name: Install PostgreSQL Host-Based-Authentication file
-  sudo: true
+  become: true
+  become_method: sudo
   template: src=tasks/postgres/templates/pg_hba.conf.j2
             dest=/etc/postgresql/{{ postgresql.version }}/main/pg_hba.conf
             owner={{ postgresql.user }} group={{ postgresql.group }}
@@ -59,10 +63,12 @@
   tags:
     - configuration
 
-#Make sure that it's restarted if it needs to be
+# Make sure that it's restarted if it needs to be
 - meta: flush_handlers
 
 - name: start postgresql and configure to startup automatically
+  become: true
+  become_method: sudo
   service: name=postgresql state=started enabled=yes
   register: started
   tags: postgresql
@@ -74,21 +80,23 @@
 
 - name: create the default postgresql user
   postgresql_user: name={{postgresql.pg_username}} password={{postgresql.pg_password}} login_user=postgres role_attr_flags=CREATEDB,SUPERUSER
-  sudo_user: postgres
+  become: true
+  become_method: sudo
+  become_user: postgres
   tags: postgresql
 
 - name: test for server instrumentation
   command: psql -c 'select * from pg_extension;' -t -A
-  sudo_user: postgres
+  become_user: postgres
   register: server_instrumentation
   changed_when: False
 
 - name: install server instrumentation
   command: psql -c 'CREATE EXTENSION adminpack;' -t -A
-  sudo_user: postgres
+  become_user: postgres
   when: "'adminpack' not in server_instrumentation.stdout"
 
 - postgresql_db:
-    name: flask_vagrant
+    name: api
     encoding: UTF-8
-    #template: tasks/postgres/templates/some_dump.sql
+    # template: tasks/postgres/templates/some_dump.sql

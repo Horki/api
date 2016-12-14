@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = settings[:box]
 
     # Hostname
-    # config.vm.host_name = "#{settings[:hostname]}.#{domain}"
+    config.vm.host_name = "#{settings[:hostname]}.#{domain}"
 
     # Port forwarding
     config.vm.network :forwarded_port, guest: 80, host: 8080

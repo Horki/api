@@ -2,5 +2,6 @@
 # Service handlers
 
 - name: start app
-  sudo: true
+  become: true
+  become_method: sudo
   command: start {{ app_name }}

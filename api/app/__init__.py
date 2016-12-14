@@ -18,7 +18,7 @@ def configure(binder):
 app = FlaskAPI(__name__, instance_relative_config=True)
 app.register_blueprint(mod_data)
 # Configure app
-configure_app(app)
+# configure_app(app)
 FlaskInjector(app=app, modules=[configure], use_annotations=True)
 
 
@@ -31,7 +31,6 @@ def not_allowed(error):
 @app.errorhandler(404)
 def not_found(error):
     return helpers.make_error(404, 1002, "Route not found.")
-
 
 
 # Todo, add Postgre SQL

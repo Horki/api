@@ -1,7 +1,8 @@
 ---
 - hosts: all
   remote_user: vagrant
-  sudo: true
+  become: true
+  become_method: sudo
 
   tasks:
     - include: tasks/util/tasks.yml
