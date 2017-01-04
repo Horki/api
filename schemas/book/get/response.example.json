@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 4,
+      "title": "Ducimus sit ut repellendus.",
+      "author": "Dragutin Dominković",
+      "user": {
+        "id": 57,
+        "email": "ostefovic@marinovic.hr",
+        "username": "Dino Rakela"
+      }
+    },
+    {
+      "id": 11,
+      "title": "Quis culpa delectus assumenda recusandae.",
+      "author": "Vjekoslav Milotić",
+      "user": {
+        "id": 6,
+        "username": "Anka Urlić",
+        "email": "jvitasovic@t.ht.hr"
+      }
+    }
+  ]
+}

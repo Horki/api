@@ -11,6 +11,7 @@
     - include: tasks/service/tasks.yml
     - include: tasks/redis/tasks.yml
     - include: tasks/postgres/tasks.yml
+    # - include: tasks/node/tasks.yml # something is wrong with npm
 
   handlers:
     - include: tasks/nginx/handlers.yml

@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "username": "test user",
+      "email": "ivanzvonimirhorvat@gmail.com",
+      "id": 1
+    },
+    {
+      "username": "Ivica Tešija",
+      "email": "lea55@zagreb.hr",
+      "id": 2
+    },
+    {
+      "username": "Jelena Pavičić",
+      "email": "rmerkas@rahija.com.hr",
+      "id": 3
+    },
+    {
+      "username": "Niko Poljak",
+      "email": "tmajstorovic@vela.info",
+      "id": 4
+    },
+    {
+      "username": "Dino Rakela",
+      "email": "ostefovic@marinovic.hr",
+      "id": 5
+    }
+  ]
+}

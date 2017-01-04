@@ -1,0 +1,22 @@
+---
+# Node tasks
+
+- name: add nodejs ppa
+  action: apt_repository repo=ppa:rwky/nodejs state=present
+
+- name: install common packages needed for nodejs application development
+  action: apt pkg={{item.name}}
+  with_items:
+    - build-essential
+    - node
+    - nodejs
+    - node-gyp
+    - npm
+
+- name: Install required node packages
+  become: true
+  become_method: sudo
+  npm:
+    name: aglio
+    state: latest
+    global: True

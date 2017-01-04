@@ -1,0 +1,12 @@
+{
+  "data": {
+    "user": {
+      "username": "test user",
+      "email": "test@test.com",
+      "id": 1
+    },
+    "title": "test",
+    "author": "test",
+    "id": 29
+  }
+}
