@@ -2,7 +2,7 @@
 # Python tasks
 
 - name: install common packages needed for python application development
-  action: apt pkg={{item}} state=installed
+  action: apt pkg={{item}} state=latest
   with_items:
     - libpq-dev
     - python3
@@ -10,9 +10,10 @@
     - python3-setuptools
 
 
-- name: Install pip requirements
+- name: Install pip3 requirements
   become: true
   become_method: sudo
   pip:
     executable: pip3
+    # extra_args: --upgrade
     requirements: /vagrant/requirements.txt
