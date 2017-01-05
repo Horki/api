@@ -7,8 +7,8 @@
 - Run `vagrant up`
 - Connect to server `vagrant ssh`
 - create `.env` file, see for all fields `.env.example`
-- Init database `/vagrant$ python3 manage.py db upgrade` with migration
-- Run seeder for dummy data `/vagrant$ python3 manage.py db seed`
+- Init database `flask db upgrade` with migration
+- Run seeder for dummy data `flask seed` *only first time*
 
 # API services
 - start service `sudo start api`
@@ -25,9 +25,16 @@
 - `sudo service nginx stop`
 
 ## Flask CLI commands
-- `python3 manage.py db <command>` [Flask-Migration](https://flask-migrate.readthedocs.io/en/latest/)
-- `python3 manage.py seed` run seeder to empty database
-- `python3 manage.py test` run API tests
+- `flask db <command>` [Flask-Migration](https://flask-migrate.readthedocs.io/en/latest/)
+- `flask seed` run seeder to empty database
+- `flask test` run API tests *TODO: upgrade tests*
+
+## Postman collection
+- `/vagrant/postman/Flask API.postman_collection`
+
+## Users
+- all users have password *123456*
+- list of all users http://127.0.0.1:8080/auth/all
 
 ## API Docs
 - http://127.0.0.1:8080/docs/

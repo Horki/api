@@ -51,8 +51,8 @@
             }
 
     + Attributes
-        + title (required)
-        + author (required)
+        + title: The Hitchhiker's Guide to the Galaxy (required, string)
+        + author: Douglas Adams (required, string)
 + Response 201 (application/json)
 
         {

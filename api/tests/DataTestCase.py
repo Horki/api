@@ -1,5 +1,6 @@
 from flask_api import status
 import unittest
+import json
 
 from api.app import app
 import api.tests.helpers as helpers
@@ -39,4 +40,5 @@ class DataTestCase(unittest.TestCase):
         }
         resp = self.app.post(uri, data=data)
 
+        assert json.loads(resp.data.decode('utf-8')) == data
         assert resp.status_code == status.HTTP_201_CREATED

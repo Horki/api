@@ -14,3 +14,9 @@
   with_items:
     - htop
     - tree
+
+- name: add aliases to .bashrc
+  action: lineinfile dest=/home/vagrant/.bashrc line="{{ item }}"
+  with_items:
+    - 'cd /vagrant'
+    - 'alias flask="python3 /vagrant/manage.py"'
