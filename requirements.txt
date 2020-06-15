@@ -38,7 +38,7 @@ iso3166==0.7
 itsdangerous==0.24
 jsonschema==2.5.1
 language-selector==0.1
-marshmallow==2.10.5
+marshmallow==2.15.1
 marshmallow-sqlalchemy==0.12.0
 pep8==1.7.0
 psycopg2==2.6.2
