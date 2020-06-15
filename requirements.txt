@@ -1,5 +1,5 @@
 Faker==0.7.7
-Flask==0.12
+Flask==1.0
 Flask-API==0.6.9
 Flask-CLI==0.4.0
 Flask-Injector==0.8.0
