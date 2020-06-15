@@ -17,7 +17,7 @@ MarkupSafe==0.23
 PyJWT==1.4.2
 SQLAlchemy==1.1.4
 WTForms==2.1
-Werkzeug==0.11.15
+Werkzeug==0.15.3
 alembic==0.8.9
 autopep8==1.2.4
 blinker==1.4
